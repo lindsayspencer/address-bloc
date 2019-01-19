@@ -1,0 +1,17 @@
+{
+  "name": "address-bloc",
+  "version": "1.0.0",
+  "description": "An application to model an address book in Node",
+  "main": "index.js",
+  "scripts": {
+    "test": "console.log('ready')"
+  },
+  "keywords": [
+    "Node",
+    "Bloc",
+    "address",
+    "book"
+  ],
+  "author": "Lindsay Spencer",
+  "license": "ISC"
+}
