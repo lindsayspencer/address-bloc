@@ -4,7 +4,7 @@
   "description": "An application to model an address book in Node",
   "main": "index.js",
   "scripts": {
-    "test": "console.log('ready')"
+    "test": "set NODE_ENV=test && jasmine"
   },
   "keywords": [
     "Node",
@@ -16,5 +16,8 @@
   "license": "ISC",
   "dependencies": {
     "inquirer": "^5.1.0"
+  },
+  "devDependencies": {
+    "jasmine": "^3.1.0"
   }
 }
