@@ -1,5 +1,6 @@
 // a JS class with methods to handle receiving requests from the user
 const inquirer = require("inquirer");
+const ContactController = require("./ContactController");
 
 module.exports = class MenuController {
   constructor() {
@@ -11,7 +12,7 @@ module.exports = class MenuController {
         choices: ["Add new contact", "Exit"]
       }
     ];
-    this.contacts = [];
+    this.book = new ContactController();
   }
   clear() {
     console.log("\x1Bc");
@@ -41,12 +42,17 @@ module.exports = class MenuController {
     process.exit();
   }
   addContact() {
-    this.clear();
-    console.log("addContact called");
-    this.main();
-  }
-  getContactCount() {
-    console.log(this.contacts.length);
-    return this.contacts.length;
+    inquirer.prompt(this.book.addContactQuestions).then(answers => {
+      this.book
+        .addContact(answers.name, answers.phone)
+        .then(contact => {
+          console.log("Contact added successfully!");
+          this.main();
+        })
+        .catch(err => {
+          console.log(err);
+          this.main();
+        });
+    });
   }
 };
